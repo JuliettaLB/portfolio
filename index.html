@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliette Loirat — Marketing & Communication</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf6f0;
+      --warm-white: #fff9f3;
+      --sand: #e8ddd0;
+      --terracotta: #c4724a;
+      --terracotta-light: #e8a07a;
+      --brown-dark: #2c1a0e;
+      --brown-mid: #5c3d2e;
+      --brown-light: #8b6355;
+      --accent: #c4724a;
+      --text: #2c1a0e;
+      --text-muted: #7a5c4e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(250, 246, 240, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--brown-mid);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--terracotta); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      padding: 8rem 4rem 6rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      color: var(--brown-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      color: var(--brown-light);
+    }
+
+    .hero-meta-item svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--terracotta);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--brown-dark);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.25s, transform 0.2s;
+      border-radius: 2px;
+      width: fit-content;
+    }
+    .btn-primary:hover { background: var(--terracotta); transform: translateY(-2px); }
+
+    .hero-right {
+      background: var(--sand);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo-placeholder {
+      width: 340px;
+      height: 420px;
+      border: 2px dashed var(--brown-light);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--brown-light);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255,255,255,0.4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-photo-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.5;
+    }
+
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--terracotta-light);
+      opacity: 0.15;
+    }
+    .deco-circle-1 { width: 300px; height: 300px; top: -80px; right: -60px; }
+    .deco-circle-2 { width: 180px; height: 180px; bottom: 40px; left: 30px; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 6rem 6rem; }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      color: var(--brown-dark);
+      margin-bottom: 3rem;
+    }
+
+    /* ─── PARCOURS ─── */
+    #parcours { background: var(--warm-white); }
+
+    .parcours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .exp-card {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .exp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(44, 26, 14, 0.1);
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--terracotta);
+    }
+
+    .exp-period {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--brown-dark);
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .exp-company {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--brown-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .exp-missions {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .exp-missions li {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .exp-missions li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--terracotta-light);
+      font-size: 0.8rem;
+    }
+
+    /* ─── COMPÉTENCES ─── */
+    #competences { background: var(--brown-dark); color: var(--cream); }
+    #competences .section-title { color: var(--cream); }
+    #competences .section-eyebrow { color: var(--terracotta-light); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .skill-group h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--terracotta-light);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skill-list li {
+      font-size: 0.88rem;
+      color: rgba(250, 246, 240, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      background: rgba(196, 114, 74, 0.2);
+      border: 1px solid rgba(196, 114, 74, 0.4);
+      color: var(--terracotta-light);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── FORMATION ─── */
+    #formation { background: var(--cream); }
+
+    .formation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .formation-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      padding: 2.2rem 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .formation-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--sand);
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .formation-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--brown-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .formation-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ─── PHOTOS ─── */
+    #galerie { background: var(--sand); }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .photo-slot {
+      aspect-ratio: 3/4;
+      background: rgba(255,255,255,0.5);
+      border: 2px dashed var(--brown-light);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      color: var(--brown-light);
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .photo-slot:hover {
+      background: rgba(255,255,255,0.75);
+      border-color: var(--terracotta);
+    }
+    .photo-slot svg { width: 32px; height: 32px; opacity: 0.4; }
+
+    /* ─── PASSIONS ─── */
+    #passions { background: var(--warm-white); }
+
+    .passions-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .passion-item {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      flex: 1;
+      min-width: 140px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .passion-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(44, 26, 14, 0.08);
+    }
+
+    .passion-icon {
+      font-size: 2rem;
+    }
+
+    .passion-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--brown-mid);
+    }
+
+    /* ─── QUALITÉS ─── */
+    #qualites { background: var(--terracotta); color: #fff; }
+    #qualites .section-eyebrow { color: rgba(255,255,255,0.7); }
+    #qualites .section-title { color: #fff; }
+
+    .qualites-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .qualite-item {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--brown-dark); color: var(--cream); text-align: center; }
+    #contact .section-title { color: var(--cream); }
+    #contact .section-eyebrow { color: var(--terracotta-light); }
+
+    .contact-sub {
+      font-size: 1rem;
+      color: rgba(250,246,240,0.65);
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--terracotta-light);
+      text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(196,114,74,0.4);
+      padding: 0.8rem 1.8rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .contact-link:hover {
+      background: var(--terracotta);
+      color: #fff;
+      border-color: var(--terracotta);
+    }
+
+    footer {
+      background: #1a0e06;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(250,246,240,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      section { padding: 5rem 3rem; }
+      nav { padding: 1.2rem 2.5rem; }
+      .hero-left { padding: 6rem 2.5rem 4rem 3rem; }
+      .parcours-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .qualites-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 320px; }
+      .hero-left { padding: 5rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+      .parcours-grid { grid-template-columns: 1fr; }
+      .formation-grid { grid-template-columns: 1fr; }
+      .photos-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: 1fr; }
+      .qualites-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Juliette Loirat</div>
+    <ul class="nav-links">
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#passions">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <span class="hero-tag">En recherche d'opportunité</span>
+      <h1 class="hero-name">Juliette<br /><em>Loirat</em></h1>
+      <p class="hero-intro">
+        Après un parcours atypique qui m'a menée du recrutement jusqu'au cœur d'un service marketing, j'ai découvert ma véritable passion : la communication et le marketing. Avec 3 ans d'expérience en entreprise dans ce domaine, je cherche aujourd'hui à m'épanouir pleinement dans un poste en <strong>marketing &amp; communication</strong> où je pourrai combiner créativité, rigueur et sens du résultat.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Saint-Sébastien-sur-Loire (44) · Véhiculée
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          28 ans
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary">Me contacter</a>
+    </div>
+    <div class="hero-right">
+      <div class="deco-circle deco-circle-1"></div>
+      <div class="deco-circle deco-circle-2"></div>
+      <div class="hero-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Ajoutez votre<br/>photo ici</span>
+        <span style="font-size:0.7rem; opacity:0.6;">Remplacez ce bloc par votre image<br/>dans le code</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <p class="section-eyebrow fade-in">Expériences professionnelles</p>
+    <h2 class="section-title fade-in">Mon parcours</h2>
+    <div class="parcours-grid">
+
+      <!-- EXP 1 — plus récente -->
+      <div class="exp-card fade-in">
+        <p class="exp-period">Janv. 2024 — Aujourd'hui</p>
+        <h3 class="exp-title">Chargée de marketing & communication</h3>
+        <p class="exp-company">Shortcuts France · CDI · Saint-Sébastien-sur-Loire</p>
+        <ul class="exp-missions">
+          <li>Gestion d'un portefeuille de clients professionnels de la beauté (salons, instituts, spas) : analyse des besoins et accompagnement stratégique</li>
+          <li>Élaboration et déploiement de plans de communication multicanaux</li>
+          <li>Campagnes SMS, RCS, newsletters et courriers marketing</li>
+          <li>Animation des réseaux sociaux et création de contenus digitaux</li>
+          <li>Organisation d'événements et concours en salon</li>
+          <li>Création et gestion des sites internet clients sous WordPress</li>
+          <li>Pilotage de campagnes publicitaires digitales (Google Ads, Meta Ads)</li>
+          <li>Analyse des performances : statistiques, études de marché, veille concurrentielle</li>
+          <li>Gestion de projets internes : refonte de l'offre marketing, nouveau site entreprise, création d'un outil SMS</li>
+        </ul>
+      </div>
+
+      <!-- EXP 2 -->
+      <div class="exp-card fade-in">
+        <p class="exp-period">Févr. 2018 — Janv. 2024</p>
+        <h3 class="exp-title">Consultante en recrutement</h3>
+        <p class="exp-company">Manpower France — Conseil Recrutement · CDI · 6 ans · Nantes</p>
+        <ul class="exp-missions">
+          <li>Développement et enrichissement d'un portefeuille clients dans les métiers de l'industrie et de l'ingénierie</li>
+          <li>Prospection et développement commercial : téléphonique, terrain, visites d'entreprises</li>
+          <li>Négociation et signature de mandats de recrutement</li>
+          <li>Pilotage du processus de recrutement de A à Z : sourcing, sélection, entretiens, intégration</li>
+          <li>Élaboration de stratégies de sourcing et constitution de viviers de talents</li>
+          <li>Facturation des prestations et gestion de l'administration des ventes</li>
+        </ul>
+      </div>
+
+      <!-- EXP 3 — plus ancienne -->
+      <div class="exp-card fade-in">
+        <p class="exp-period">Avr. 2017 — Févr. 2018</p>
+        <h3 class="exp-title">Account Manager</h3>
+        <p class="exp-company">Pénélope Groupe · 11 mois</p>
+        <ul class="exp-missions">
+          <li>Gestion d'un portefeuille clients événementiel et marketing sur 23 départements</li>
+          <li>Relation client : comptes rendus et rapports mensuels</li>
+          <li>Pilotage opérationnel de la prestation : qualité, suivi des procédures</li>
+          <li>Recrutement complet : sourcing, pré-qualification, entretiens</li>
+          <li>Organisation de formations et briefings d'équipes</li>
+          <li>Gestion administrative RH : contrats CDD/CDI, fins de contrat, avertissements</li>
+          <li>Planification, logistique et vérification de la paie</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="competences">
+    <p class="section-eyebrow fade-in">Savoir-faire</p>
+    <h2 class="section-title fade-in">Compétences</h2>
+    <div class="skills-grid">
+
+      <div class="skill-group fade-in">
+        <h3>Outils digitaux</h3>
+        <div class="tag-grid">
+          <span class="tag">Mailjet</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Canva</span>
+          <span class="tag">CapCut</span>
+          <span class="tag">Google Ads</span>
+          <span class="tag">Meta Ads</span>
+          <span class="tag">CRM</span>
+          <span class="tag">Suite Google</span>
+          <span class="tag">Pack Office</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-in">
+        <h3>Marketing & Communication</h3>
+        <ul class="skill-list">
+          <li>Stratégie marketing & plans de communication</li>
+          <li>Gestion de la relation client (comptes clés)</li>
+          <li>Création de contenus digitaux</li>
+          <li>Community management</li>
+          <li>Analyse de performances & reporting</li>
+          <li>Veille concurrentielle & études de marché</li>
+        </ul>
+      </div>
+
+      <div class="skill-group fade-in">
+        <h3>Langues</h3>
+        <ul class="skill-list">
+          <li>Français — Langue maternelle</li>
+          <li>Anglais — Niveau B1</li>
+          <li>Espagnol — Niveau A1</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FORMATION -->
+  <section id="formation">
+    <p class="section-eyebrow fade-in">Cursus scolaire</p>
+    <h2 class="section-title fade-in">Formation</h2>
+    <div class="formation-grid">
+      <div class="formation-card fade-in">
+        <div class="formation-year">2017</div>
+        <div class="formation-info">
+          <h4>DUT Gestion des Entreprises et des Administrations</h4>
+          <p>Université de Nantes<br/>Mention obtenue</p>
+        </div>
+      </div>
+      <div class="formation-card fade-in">
+        <div class="formation-year">2015</div>
+        <div class="formation-info">
+          <h4>Baccalauréat Économique et Social</h4>
+          <p>Mention Bien</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASSIONS -->
+  <section id="passions">
+    <p class="section-eyebrow fade-in">Qui suis-je ?</p>
+    <h2 class="section-title fade-in">Centres d'intérêt</h2>
+    <div class="passions-row">
+      <div class="passion-item fade-in">
+        <span class="passion-icon">🏃‍♀️</span>
+        <span class="passion-label">Sport</span>
+      </div>
+      <div class="passion-item fade-in">
+        <span class="passion-icon">✈️</span>
+        <span class="passion-label">Voyages</span>
+      </div>
+      <div class="passion-item fade-in">
+        <span class="passion-icon">📚</span>
+        <span class="passion-label">Lecture</span>
+      </div>
+      <div class="passion-item fade-in">
+        <span class="passion-icon">🍳</span>
+        <span class="passion-label">Cuisine</span>
+      </div>
+      <div class="passion-item fade-in">
+        <span class="passion-icon">👗</span>
+        <span class="passion-label">Mode</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITÉS -->
+  <section id="qualites">
+    <p class="section-eyebrow fade-in">Ce qui me définit</p>
+    <h2 class="section-title fade-in">Mes qualités</h2>
+    <div class="qualites-grid">
+      <div class="qualite-item fade-in">Persévérante</div>
+      <div class="qualite-item fade-in">Consciencieuse</div>
+      <div class="qualite-item fade-in">Dynamique</div>
+      <div class="qualite-item fade-in">Investie</div>
+      <div class="qualite-item fade-in">Sens du résultat</div>
+      <div class="qualite-item fade-in">Communication orale & écrite irréprochable</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-eyebrow fade-in">Travaillons ensemble</p>
+    <h2 class="section-title fade-in">Me contacter</h2>
+    <p class="contact-sub fade-in">
+      Je suis à la recherche d'un poste en marketing & communication.<br/>
+      N'hésitez pas à me contacter, je serais ravie d'échanger !
+    </p>
+    <div class="contact-links fade-in">
+      <a href="mailto:juliette.lb44@gmail.com" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        juliette.lb44@gmail.com
+      </a>
+      <a href="tel:0603592575" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        06 03 59 25 75
+      </a>
+      <a href="https://www.linkedin.com/in/julietteloirat/" target="_blank" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <footer>© 2026 Juliette Loirat — Saint-Sébastien-sur-Loire</footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
+
